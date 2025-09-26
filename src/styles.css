@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+/* importar tipografias */
+/* variables de css -> Paleta de Colores */
+/* condiciiones iniciales (opcional) */
+
+@import url('https://fonts.cdnfonts.com/css/konnichiwa');
+
+/* variables de css */
+
+:root{
+    --primary-color: #D63384;
+    --secondary-color:  #FFC107;
+    --light-background: #F8D7DA;
+}
+
+body{
+    background-color: var(--light-background);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Konnichiwa', sans-serif;
+}
