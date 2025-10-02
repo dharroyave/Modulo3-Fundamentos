@@ -2,6 +2,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; // para usar GET, POST, PUT, DELETE
 import { Product } from '../interfaces/product';
+import { environment } from '../../environments/envionments';
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +13,31 @@ export class ProductService {
   private httpClient = inject(HttpClient);
   
   // 2. definir ruta de acceso al back
-  private apiURL = 'http://localhost:3000'; //url general del backend
+  private apiUrl = environment.appUrl; //url general del backend
 
   // 3. metodos para hacer las peticiones
   
   // peticion post
   postProduct(productToCreate : Product ){
-    return this.httpClient.post(this.apiURL + '/products/crear', productToCreate);
+    return this.httpClient.post(this.apiUrl + '/products/crear', productToCreate);
   };
 
   // peticion get 
   getProducts(){
-    return this.httpClient.get(this.apiURL + '/products/mostrar')
+    return this.httpClient.get(this.apiUrl + '/products/mostrar')
   };
 
   // peticion put
   putProduct(productToUpdate: Product, id:string){
-    return this.httpClient.put(this.apiURL + '/products/actualizar/' + id, productToUpdate);
+    // return this.httpClient.put(this.apiUrl + '/products/actualizar/' + id, productToUpdate); //Opcion1
+    return this.httpClient.put(`${this.apiUrl}/products/actualizar/${id}`, productToUpdate); //opcion2
   }; 
 
   // peticion delete
   deleteProduct(id : string){
-    return this.httpClient.delete(this.apiURL + '/products/eliminar/' + id)
-  };
-  
+    // return this.httpClient.delete(this.apiUrl + '/products/eliminar/' + id);
+    return this.httpClient.delete(this.apiUrl + '/products/eliminar/' , {
+      params :{id}
+    }); //Opcion3
+  };  
 }
