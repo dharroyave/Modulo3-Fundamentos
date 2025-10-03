@@ -2,7 +2,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; // para usar GET, POST, PUT, DELETE
 import { Product } from '../interfaces/product';
-import { environment } from '../../environments/envionments';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +37,7 @@ export class ProductService {
   deleteProduct(id : string){
     // return this.httpClient.delete(this.apiUrl + '/products/eliminar/' + id);
     return this.httpClient.delete(this.apiUrl + '/products/eliminar/' , {
-      params :{id}
+      params :{id},
     }); //Opcion3
   };  
 }
