@@ -7,16 +7,28 @@
 
 /* variables de css */
 
-:root{
+:root {
     --primary-color: #D63384;
-    --secondary-color:  #FFC107;
+    --secondary-color: #FFC107;
     --light-background: #F8D7DA;
+    --white: #FFFFFF;
+    --text-dark: #2C2C2C;
+    --text-light: #6C757D;
+    --gradient-primary: linear-gradient(90deg,rgba(214, 51, 132, 1) 0%, rgba(255, 193, 7, 1) 50%, rgba(248, 215, 218, 1) 100%);
+    --gradient-second: linear-gradient(90deg,rgba(214, 51, 132, 1) 0%, rgba(248, 215, 218, 1) 100%);
+
 }
 
-body{
-    background-color: var(--light-background);
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+}
+
+body {
+    background-color: var(--white);
     font-family: 'Konnichiwa', sans-serif;
+    color: var(--text-dark);
+    overflow-x: hidden;
 }

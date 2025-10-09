@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 //1. importar el servicio porque queremos hacer get de los productos
 import { ProductService } from '../../services/products';
 import { Product } from '../../interfaces/product';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-card',
@@ -14,6 +15,7 @@ export class Card implements OnInit {
   _productService = inject(ProductService);
   // variable
   allProducts: Product[] = []; // vamos almacenar todos los productos de la BD
+  baseUrl: string = environment.appUrl;
 
   showProducts(){
     //1. voy a hacer la peticion get

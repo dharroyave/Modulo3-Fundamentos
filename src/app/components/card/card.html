@@ -1,6 +1,8 @@
 <section class="row">
+  <!-- uyilizar estructuras de control de flujo - for y el if - else -->
   @for (item of allProducts; track $index) {
-
+  <!-- contenido dinamico: cambie dependiendo de la bd de datos
+ - interpolacion : {{poner la variable que se quiere mostrar}} -->
   <div class="col">
     <div class="card" style="width: 18rem">
       <img src="{{ item.image }}" class="card-img-top" alt="..." />
@@ -8,7 +10,7 @@
         <h5 class="card-title">{{ item.title }}</h5>
         <p class="card-text">{{ item.description }}</p>
         <a href="#" class="btn btn-primary">{{ item.price }}</a>
-        <h3>{{item.categories}}</h3>
+        <h3>{{ item.categories }}</h3>
       </div>
     </div>
   </div>

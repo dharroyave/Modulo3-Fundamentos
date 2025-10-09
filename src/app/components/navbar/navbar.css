@@ -1,0 +1,23 @@
+/* logo */
+.logo {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* botones */
+.btn {
+    border: none;
+    padding: 2px 10px;
+    border-radius: 50px;
+    color:  var(--white);
+
+}
+
+.btn-registro{
+    background: var(--gradient-primary);
+}
+
+.btn-sesion{
+    background: var(--gradient-second);
+
+}

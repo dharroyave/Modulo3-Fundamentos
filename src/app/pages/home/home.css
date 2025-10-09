@@ -1,0 +1,19 @@
+/* baner */
+.baner{
+    width: 100vw;
+    height: 85vh;
+    background: var(--gradient-primary);
+}
+
+/* productos */
+.productos{
+    width: 100vw;
+    height: 60vh;
+}
+
+/* llamado a la accion */
+.llamado-action{
+    width: 100vw;
+    height: 50vh;
+    background: var(--gradient-second);
+}
