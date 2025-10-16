@@ -59,6 +59,8 @@ export class LoginService {
     this._router.navigate(['/login']);
   }
 
-
-
+  // 6. para saber si se inicio sesión o no
+  isloggedIn(){
+    return this.getToken() ? true : false;
+  }
 }
