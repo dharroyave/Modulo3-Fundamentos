@@ -1,11 +1,62 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Credencials } from '../../interfaces/credencials';
+import { LoginService } from '../../services/login';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrl: './login.css',
 })
 export class Login {
+  // variables e injeccion de servicios
+  private _loginService = inject(LoginService);
 
+  loginForm = new FormGroup({
+    emailLogin: new FormControl(''),
+    passwordLogin: new FormControl(''),
+  });
+
+  //manejo de eventos
+  handleSubmit() {
+    // const email = this.loginForm.value.emailLogin
+    // const password = this.loginForm.value.passwordLogin
+    // console.log(email, password)
+
+    const credencials: Credencials = {
+      emailLogin: this.loginForm.value.emailLogin || '',
+      passwordLogin: this.loginForm.value.passwordLogin || '',
+    };
+
+    console.log('Credenciales para Login', credencials);
+
+    this._loginService.login(credencials).subscribe({
+      // manejo de la respuesta o error
+      next: (res: any) => {
+        console.log(res);
+        if (res) {
+          localStorage.setItem('token', res.token);
+
+          Swal.fire({
+            title: res.mensaje,
+            icon: 'success',
+            draggable: true,
+          });
+
+          this._loginService.redirectTo();
+        }
+      },
+      error: (err: any) => {
+        console.error('Mensaje de error: ');
+          Swal.fire({
+            title: "Oops!",
+            text: err.error.mensaje,
+            icon: 'success',
+            draggable: true,
+          });
+      },
+    });
+  }
 }

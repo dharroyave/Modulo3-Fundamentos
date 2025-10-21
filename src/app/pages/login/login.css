@@ -1,0 +1,19 @@
+main{
+    /* border: solid red; */
+    width: 100vw;
+    height: 60vh;
+}
+
+.formulario{
+    /* border: solid blue; */
+    width: 40%;
+    margin: 150px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.btn{
+    background: var(--gradient-second);
+    color: var(--white);
+}
