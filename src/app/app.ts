@@ -1,14 +1,18 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from './components/navbar/navbar';
 import { Footer } from './components/footer/footer';
+import { LoginService } from './services/login';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar,Footer],
+  imports: [RouterOutlet, Navbar, Footer],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('frontend');
+  private _loginService = inject(LoginService);
+  isInvisible : boolean = this._loginService.isAdmin();
+  // si es admon isInvisible = true
+  // si no es admon isInvisible = false
 }

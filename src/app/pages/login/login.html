@@ -11,6 +11,8 @@
           class="form-control"
           formControlName="emailLogin"
           autocomplete="username"
+          placeholder="Ingrese su correo"
+          [class.is-invalid]="loginForm.get('emailLogin')?.invalid"
       >      
     </div>
     <!-- contraseña -->
@@ -21,6 +23,9 @@
           class="form-control" 
           formControlName="passwordLogin"
           autocomplete="current-password"
+          placeholder="Ingrese su contraseña"
+          [class.is-invalid]="loginForm.get('passwordLogin')?.touched && loginForm.get('passwordLogin')?.invalid"
+
       >
     </div>
     <!-- btn para iniciar sesión -->

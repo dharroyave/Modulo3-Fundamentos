@@ -15,8 +15,8 @@ export class Login {
   private _loginService = inject(LoginService);
 
   loginForm = new FormGroup({
-    emailLogin: new FormControl(''),
-    passwordLogin: new FormControl(''),
+    emailLogin: new FormControl('', [Validators.required, Validators.email]),
+    passwordLogin: new FormControl('', [Validators.required, Validators.minLength(8)]),
   });
 
   //manejo de eventos
@@ -24,6 +24,10 @@ export class Login {
     // const email = this.loginForm.value.emailLogin
     // const password = this.loginForm.value.passwordLogin
     // console.log(email, password)
+    if(this.loginForm.invalid){
+      this.loginForm.markAllAsTouched();
+      return;
+    }
 
     const credencials: Credencials = {
       emailLogin: this.loginForm.value.emailLogin || '',
@@ -50,12 +54,12 @@ export class Login {
       },
       error: (err: any) => {
         console.error('Mensaje de error: ');
-          Swal.fire({
-            title: "Oops!",
-            text: err.error.mensaje,
-            icon: 'success',
-            draggable: true,
-          });
+        Swal.fire({
+          title: 'Oops!',
+          text: err.error.mensaje,
+          icon: 'error',
+          draggable: true,
+        });
       },
     });
   }

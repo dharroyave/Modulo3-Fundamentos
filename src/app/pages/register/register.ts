@@ -9,57 +9,52 @@ import { Router } from '@angular/router';
   selector: 'app-register',
   imports: [ReactiveFormsModule],
   templateUrl: './register.html',
-  styleUrl: './register.css'
+  styleUrl: './register.css',
 })
 export class Register {
-
   private _userService = inject(UserService);
   private _router = inject(Router);
 
   registerForm = new FormGroup({
-    name : new FormControl(''),
-    username: new FormControl(''),
-    email: new FormControl(''),
-    age: new FormControl<number | null >(null),
-    password: new FormControl<string>(''),
+    name: new FormControl('', [Validators.required]),
+    username: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    age: new FormControl<number | null>(null),
+    password: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
   });
 
-  handleSubmit(){
-
-    const userData : User = {
-      _id : '',
-      name : this.registerForm.value.name || '',
-      username : this.registerForm.value.username || '',
+  handleSubmit() {
+    const userData: User = {
+      _id: '',
+      name: this.registerForm.value.name || '',
+      username: this.registerForm.value.username || '',
       email: this.registerForm.value.email || '',
-      age : this.registerForm.value.age || 0,
-      password : this.registerForm.value.password || '',
-      role : 'user'
-    }
+      age: this.registerForm.value.age || 0,
+      password: this.registerForm.value.password || '',
+      role: 'user',
+    };
 
     console.log('Datos del Usuario: ', userData);
 
     this._userService.postUser(userData).subscribe({
-      next : (res:any)=>{
+      next: (res: any) => {
         console.log(res);
         Swal.fire({
           title: 'Bien!',
           text: res.mensaje,
-          icon: 'success'
-        }).then(()=>{
+          icon: 'success',
+        }).then(() => {
           this._router.navigate(['/login']);
-        })
+        });
       },
-      error : (err:any)=>{
+      error: (err: any) => {
         console.error(err.error.mensaje);
         Swal.fire({
           title: 'Oops!',
           text: err.error.mensaje,
-          icon: 'error'
-        })
-      }
+          icon: 'error',
+        });
+      },
     });
-
   }
-
-
 }

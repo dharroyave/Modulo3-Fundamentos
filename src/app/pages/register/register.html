@@ -10,8 +10,9 @@
         class="form-control" 
         id="nombre" 
         formControlName="name"
-        placeholder="Ingrese su nombre completo" 
-       />
+        placeholder="Ingrese su nombre completo"
+        required
+      >
     </div>
 
     <!-- username-->
@@ -24,7 +25,8 @@
         formControlName="username" 
         autocomplete="username"
         placeholder="Ingresa Username"
-      />
+        required
+      >
     </div>
 
     <!-- correo electronico -->
@@ -36,8 +38,9 @@
         id="correo" 
         formControlName="email"
         autocomplete="email"
-        placeholder="Ingresa Correo" 
-      />
+        placeholder="Ingresa Correo"
+        required 
+      >
     </div>
 
     <!-- edad-->
@@ -49,7 +52,8 @@
         id="edad" 
         formControlName="age" 
         placeholder="Ingresa Edad"
-      />
+        required
+      >
     </div>
 
     <!-- contraseña1 -->
@@ -62,9 +66,12 @@
         formControlName="password" 
         autocomplete="new-password"
         placeholder="Ingresa Contrañesa"
-        />
-    </div>
+      >
+      </div>
 
+      <!-- required
+      minlength="8" -->
+      
     <!-- btn para iniciar sesión -->
     <button type="submit" class="btn">Registrarse</button>
   </form>

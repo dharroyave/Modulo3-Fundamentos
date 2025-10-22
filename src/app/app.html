@@ -1,14 +1,16 @@
 <!-- encabezado en mi app -->
+@if (!isInvisible) {
 <header>
-    <app-navbar></app-navbar>
+  <app-navbar></app-navbar>
 </header>
-
+}
 
 <!-- contenido de las rutas -->
-<router-outlet /> 
-
+<router-outlet />
 
 <!-- pie de pagina de mi app -->
- <footer>
-    <app-footer></app-footer>
- </footer>
+@if (!isInvisible) {
+<footer>
+  <app-footer></app-footer>
+</footer>
+}
