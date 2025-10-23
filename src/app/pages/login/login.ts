@@ -16,7 +16,7 @@ export class Login {
 
   loginForm = new FormGroup({
     emailLogin: new FormControl('', [Validators.required, Validators.email]),
-    passwordLogin: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    passwordLogin: new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
 
   //manejo de eventos
