@@ -35,7 +35,7 @@ export class Users implements OnInit {
 
   deleteUser(id: string) {
     // hace la petición DELETE
-    console.log('Id del Usuario a eliminar: ', id);
+    console.log('Id del Usuario a eliminar prueba: ', id);
     this._userService.deleteUser(id).subscribe({
       next: (res: any) => {
         console.log(res);
