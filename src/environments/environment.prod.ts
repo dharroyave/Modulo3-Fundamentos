@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    appUrl: 'http://18.222.89.228:3000/'
+    appUrl: 'https://dvn-dev.duckdns.org'
 }
